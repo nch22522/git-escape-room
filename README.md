@@ -1,22 +1,31 @@
 # Git Escape Room
 
-The vault is locked behind a 3-digit code. Your clues are scattered through
-Git history and across branches. Use Git commands to track them down—no
-guessing required!
+Crack the vault by recovering clues from Git history, exploring a hidden
+branch, and merging the final clue. The interactive vault is a standalone
+HTML/CSS/JavaScript app with no external dependencies.
 
-## Find the clues
+## Start the escape room
 
-1. **Recover the first clue from history.** The evidence was deleted, but Git
-   remembers it. Inspect the history with `git log --all --oneline -- clue1.txt`
-   and use `git show <commit>:clue1.txt` with the earlier commit that added the
-   file.
-2. **Explore the hidden branch.** List every branch with `git branch -a`, then
-   switch to `secret-room` with `git switch secret-room`. Look for the note
-   there. If Git has not created a local branch yet, use
-   `git switch --track origin/secret-room`.
-3. **Merge the final clue into main.** Switch back with `git switch main`, then
-   run `git merge final-clue` and inspect the newly added file. If needed, first
-   create a local tracking branch with
-   `git switch --track origin/final-clue`, then switch back to `main`.
+Open `index.html` directly in your browser (double-click the file). Keep it
+open while you work through the missions; after the final merge, the last
+status light will automatically detect the new clue file.
 
-Put the three digits together in order to unlock the vault. Happy sleuthing!
+## Your three Git missions
+
+1. **Search the archive for digit one.** The clue was deleted, but its commit
+   remains in history. Find it with
+   `git log --all --oneline -- clue1.txt`, then inspect the earlier commit
+   that added it with `git show <commit>:clue1.txt`.
+2. **Explore `secret-room` for digit two.** Run `git branch -a`, then switch
+   to the hidden branch with `git switch secret-room`. Open `secret-panel.html`
+   (or inspect `hidden_note.txt`) to reveal its clue. If Git has not created a
+   local branch, use `git switch --track origin/secret-room`.
+3. **Merge `final-clue` for digit three.** Return to `main` with
+   `git switch main`, then run `git merge final-clue`. If the branch is only
+   listed as `origin/final-clue`, first run
+   `git switch --track origin/final-clue`, then switch back to `main` and merge.
+   The merge adds `clue3.js`; the vault detects it and lights the final LED.
+
+Enter the three digits in order on the keypad. Keyboard digits, Backspace,
+Enter, and Escape work too. Unlock the vault to earn your Git Master
+Certificate. Happy sleuthing!
